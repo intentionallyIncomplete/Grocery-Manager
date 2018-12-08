@@ -11,7 +11,7 @@ import java.util.Scanner;
  * Read files, process orders, sort and print results
  */
 public class Driver {
-    static ArrayList<GroceryOrder<GroceryItem>> orders = new ArrayList<>();
+    //static ArrayList<GroceryOrder<GroceryItem>> orders = new ArrayList<>();
 
     /**
      * @param args
@@ -23,13 +23,13 @@ public class Driver {
 
 	try {
 	    manager.readInventory();
-	    readOrders();
+	    //readOrders();
 	} catch (FileNotFoundException e) {
 	    e.printStackTrace();
 	}
 	System.out.println("******** Initial Inventory ********");
 	manager.displayInventory();
-
+/*
 	// purchase items
 	System.out.println("******** Processing Orders ********");
 	for (GroceryOrder<GroceryItem> order: orders)
@@ -76,6 +76,6 @@ public class Driver {
 	    System.out.println(e);
 	} finally {
 	    input.close();
-	}
+	}*/
     }
 }

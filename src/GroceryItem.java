@@ -10,7 +10,7 @@
  * Note: All data types declared begin with "g" followed by an underscore ("g_") to
  * mark these are all generic in their use here.
  */
-public class GroceryItem {
+public abstract class GroceryItem implements Comparable<GroceryItem>{
     
     /*Data members for the class.*/
     private String g_Name;
@@ -83,9 +83,33 @@ public class GroceryItem {
 	try{
 	    this.g_Price = c_Price;
 	}catch(Exception e){
-	    System.out.println("Price no valid " + e.getCause().toString());
+	    System.out.println("Price not valid " + e.getCause().toString());
 	}
 	return g_Price;
+    }
+    
+    /*Methods that require overriding.*/
+    
+    /**
+     * @return - Returns a formatted String value of the GroceryItem in immediate memory.
+     * */
+    @Override
+    public String toString(){
+	// https://dzone.com/articles/java-string-format-examples
+	// In order of formatting:
+	// |%-16s| --> sets left justification and length of each String set to maximum of 16 characters
+	// which is +1 more than the longest String in the List.
+	// 
+	return String.format("Name: |%-16s| Stock Quantity: |%-2d| Price |%-5.2f|", g_Name, g_Quantity, g_Price);
+    }
+    
+    /**
+     * @return - Returns an integer value of -1, 0, or 1 for less than, equal to, or greater than. This is a comparative
+     * value that's calculated using the Comparable interface which checks the String values' against each other lexicographically.
+     * */
+    @Override
+    public int compareTo(GroceryItem other){
+	return this.getName().compareToIgnoreCase(other.getName());
     }
     
     /*Getters for private data*/
