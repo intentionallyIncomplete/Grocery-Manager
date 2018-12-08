@@ -8,15 +8,15 @@ import java.util.Scanner;
  * @author Ian Bryan
  * @version Dec 7th, 2018
  *
- * Read files, process orders, sort and print results
+ * Read files, process orders, sort and print results.
  */
 public class Driver {
-   static ArrayList<GroceryOrder<GroceryItem>> orders = new ArrayList<>();
-
     /**
-     * @param args
      * 
      */
+    static ArrayList<GroceryOrder<GroceryItem>> orders = new ArrayList<>();
+
+    @SuppressWarnings("javadoc")
     public static void main(String[] args) {
 	GroceryManager manager = new GroceryManager();
 
@@ -31,7 +31,7 @@ public class Driver {
 
 	// purchase items
 	System.out.println("******** Processing Orders ********");
-/*	for (GroceryOrder<GroceryItem> order: orders)
+	for (GroceryOrder<GroceryItem> order: orders)
 	    manager.processOrder(order);
 	manager.displayInventory();
 
@@ -48,6 +48,7 @@ public class Driver {
 	System.out.println(manager.getReorderList());
     }
 
+    @SuppressWarnings("javadoc")
     public static void readOrders() {
 	Scanner input = null;
 	String line;
@@ -75,6 +76,6 @@ public class Driver {
 	    System.out.println(e);
 	} finally {
 	    input.close();
-	}*/
+	}
     }
 }
