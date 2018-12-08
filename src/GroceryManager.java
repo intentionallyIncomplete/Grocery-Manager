@@ -100,12 +100,16 @@ public class GroceryManager {
     }
 
     /**
-     * This took a while to figure out.
-     * 
      * @see http://bit.ly/2G3pDhG
      * @see http://bit.ly/2G4Oulh
      * @see http://bit.ly/2G3PyGc
      * @see Lab_9 assignment.
+     * 
+     * This method utilizes the properties of BubbleSort (O(n^2)) to
+     * check one price against its next immediate neighbor in the List.
+     * 
+     * Under the condition that Max > Max +1, then swap the values until
+     * the condition is no longer satisfied.
      */
     public void sortByPrice(){
 	// The outer loop moves over 1 item every List size number of iterations
@@ -117,9 +121,10 @@ public class GroceryManager {
 		if(inventory.get(j).getPrice() > inventory.get(j+1).getPrice()){
 		    // Retain value of Object at position 'j' because it will be replaced when using set(e)
 		    GroceryItem item = inventory.get(j);
-		    //
+		    // Replace Object at 'j', at position 'j', with the value of Object at position of 'j+1'
 		    inventory.set(j, inventory.get(j+1));
-		    inventory.set(j+1,item);
+		    // Finally, set - at position of the neighbor's last position, the value of the retained Object.
+		    inventory.set(j+1,item); // Item should always be greater than Object at position 'j'.
 		}
 	    }
 	}
