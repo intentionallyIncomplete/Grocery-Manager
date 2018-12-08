@@ -68,11 +68,6 @@ public class Produce extends GroceryItem{
      * */
     @Override
     public String toString(){
-	return "Item| " + super.toString() + ". Organic: (True|False) " + this.p_isOrganic;
+	return "Item|=" + super.toString() + " Organic: (True|False) " + this.p_isOrganic;
     }
-
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {}
 }

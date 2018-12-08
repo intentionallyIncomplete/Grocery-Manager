@@ -80,7 +80,7 @@ public class Dairy extends GroceryItem{
      * */
     @Override
     public String toString(){
-	return "Item| " + super.toString() + " and should be stored at " + this.f_Temp + " to preserve.";
+	return "Item|=" + super.toString() + " and should be stored at " + this.f_Temp + " to preserve.";
     }
     
     /**

@@ -89,7 +89,6 @@ public abstract class GroceryItem implements Comparable<GroceryItem>{
     }
     
     /*Methods that require overriding.*/
-    
     /**
      * @return - Returns a formatted String value of the GroceryItem in immediate memory.
      * */
@@ -98,15 +97,16 @@ public abstract class GroceryItem implements Comparable<GroceryItem>{
 	// https://dzone.com/articles/java-string-format-examples
 	// In order of formatting:
 	// |%-16s| --> sets left justification and length of each String set to maximum of 16 characters
-	// which is +1 more than the longest String in the List.
-	// 
-	return String.format("Name: |%-16s| Stock Quantity: |%-2d| Price |%-5.2f|", g_Name, g_Quantity, g_Price);
+	// which is +1 character more than the longest String in the List.
+	// Quantity is adjusted with a 5 space left-padding and Price is formatted to a 2-point floating decimal.
+	// Price has the same left padding as Quantity.
+	return String.format(" Name = %-16s||Quantity: %-5d||Price %-5.2f|", this.getName(), this.getQuantity(), this.getPrice());
     }
     
     /**
      * @return - Returns an integer value of -1, 0, or 1 for less than, equal to, or greater than. This is a comparative
      * value that's calculated using the Comparable interface which checks the String values' against each other lexicographically.
-     * */
+     */
     @Override
     public int compareTo(GroceryItem other){
 	return this.getName().compareToIgnoreCase(other.getName());
@@ -121,11 +121,4 @@ public abstract class GroceryItem implements Comparable<GroceryItem>{
     
     /** @return - Returns the value, as a double, of the price for any item.	*/
     public double getPrice(){	return this.g_Price;	}
-    
-    
-    @SuppressWarnings("javadoc")
-    public static void main(String[] args) {
-	// only for testing
-	
-    }
 }

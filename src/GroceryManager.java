@@ -33,12 +33,6 @@ public class GroceryManager {
      * groceryInventory.txt file.
      */
     public void readInventory() throws FileNotFoundException {
-	/*Variable naming reference*/
-	/**
-	 * input = Scanner object
-	 * qline = next "queried" line of data from Scanner object
-	 * qparts = an array of Strings with the first item always the Item Type, then
-	 * */
 	Scanner input = null;
 	try {
 	    input = new Scanner(new FileInputStream("groceryInventory.txt"));
@@ -71,6 +65,19 @@ public class GroceryManager {
 	} finally {
 	    input.close();
 	}
+    }
+
+    /**
+     * @param order - 
+     * 
+     * Subtracts the items and quantities in the order from the inventory
+     * If 0 inventory hit, add to reorder list.
+     * If the quantity ordered is greater than the quantity in inventory, 
+     * error thrown with message “out of item_name” (continues).
+     */
+    public void processOrder(GroceryOrder order){
+	// Find the item in the list
+	
     }
 
     /**

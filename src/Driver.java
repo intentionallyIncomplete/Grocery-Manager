@@ -11,14 +11,13 @@ import java.util.Scanner;
  * Read files, process orders, sort and print results
  */
 public class Driver {
-    //static ArrayList<GroceryOrder<GroceryItem>> orders = new ArrayList<>();
+   static ArrayList<GroceryOrder<GroceryItem>> orders = new ArrayList<>();
 
     /**
      * @param args
      * 
      */
     public static void main(String[] args) {
-	// 
 	GroceryManager manager = new GroceryManager();
 
 	try {
@@ -29,10 +28,10 @@ public class Driver {
 	}
 	System.out.println("******** Initial Inventory ********");
 	manager.displayInventory();
-/*
+
 	// purchase items
 	System.out.println("******** Processing Orders ********");
-	for (GroceryOrder<GroceryItem> order: orders)
+/*	for (GroceryOrder<GroceryItem> order: orders)
 	    manager.processOrder(order);
 	manager.displayInventory();
 

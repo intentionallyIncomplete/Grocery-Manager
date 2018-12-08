@@ -67,11 +67,6 @@ public class Meat extends GroceryItem{
      * */
     @Override
     public String toString(){
-	return "Item| " + super.toString() + ". Is the meat ground? (true|false) " + this.m_isGround;
+	return "Item|=" + super.toString() + " Is the meat ground? (true|false) " + this.m_isGround;
     }
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {}
-
 }
