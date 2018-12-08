@@ -18,4 +18,13 @@ public class GroceryException extends RuntimeException{
 	// Send data immediately to the parent class (Exception).
 	super(messageOut,errorThrown);
     }
+    
+    /**
+     * @param messageOut - A String handed in from another class during Exception throw.
+     * 
+     * A constructor that takes one String parameter. Sends String to super.
+     */
+    public GroceryException(String messageOut){
+	super(messageOut);
+    }
 }

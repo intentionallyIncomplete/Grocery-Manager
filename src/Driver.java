@@ -22,7 +22,7 @@ public class Driver {
 
 	try {
 	    manager.readInventory();
-	    //readOrders();
+	    readOrders();
 	} catch (FileNotFoundException e) {
 	    e.printStackTrace();
 	}

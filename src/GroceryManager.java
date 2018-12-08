@@ -68,26 +68,50 @@ public class GroceryManager {
     }
 
     /**
-     * @param order - Represents the data from a few lines read in from the groceryOrders.txt
-     * file in Driver.java. 
+     * @param order - A List of GroceryItems.
+     * @throws GroceryException - 
      * 
      * Subtracts the items and quantities in the order from the inventory
      * If 0 inventory hit, add to reorder list.
      * If the quantity ordered is greater than the quantity in inventory, 
      * error thrown with message “out of item_name” (continues).
      */
-    public void processOrder(GroceryOrder order){
-	// Find the item in the list
-
+    public void processOrder(GroceryOrder<GroceryItem> order){
+	for(int i=0;i<order.size();i++){
+	    // Sending the name from the order List to compare against
+	    // The current inventory.
+	    GroceryItem foundItem = findItemByName(order.get(i).getName()); // An item in the inventory List.
+	    try{
+		if(order.get(i).getQuantity() < foundItem.getQuantity()){
+		    foundItem.setQuantity(foundItem.getQuantity() - order.get(i).getQuantity());
+		}else if(order.get(i).getQuantity() == foundItem.getQuantity()){
+		    reorderList.add(foundItem.getName());
+		    foundItem.setQuantity(0);
+		    throw new GroceryException("Ran out of item " + foundItem.getName());
+		}else if(order.get(i).getQuantity() > foundItem.getQuantity()){
+		    reorderList.add(foundItem.getName());
+		    foundItem.setQuantity(0);
+		    throw new GroceryException("Requested amount > available " + order.get(i).getName());
+		}
+	    }catch(GroceryException ge){
+		System.out.println(ge);
+	    }
+	}
     }
 
     /**
-     * @param name
-     * @return
+     * @param name - A String value that represents a name of a GroceryItem.
+     * 
+     * @return - Returns the Object at some index where the String handed to the method
+     * was equal to the String value inside the Object.
      */
     public GroceryItem findItemByName(String name){
-
-
+	// Find the String of the item that matches the handed one.
+	for(int i=0;i<inventory.size();i++){
+	    if(inventory.get(i).getName().compareToIgnoreCase(name) == 0){
+		return inventory.get(i);
+	    }
+	}
 	return null;
     }
 
@@ -96,7 +120,20 @@ public class GroceryManager {
      * (lexicographically evaluated) by compareTo() method.
      */
     public void sortByName(){
-
+	for (int i=0;i<inventory.size()-1;i++) 
+	{ 
+	    // Find the minimum element in unsorted array 
+	    int min_idx = i; 
+	    int j;
+	    for (j = i+1; j < n; j++) 
+	    {
+		if (inventory.get(j).compareTo(inventory.get(min_idx)) < 1)
+		{
+		    min_idx = j; 
+		}
+	    }  
+	    inventory.add(i, inventory.remove(min_idx)); //performs swap
+	}  
     }
 
     /**
@@ -136,9 +173,9 @@ public class GroceryManager {
      * and the quantity was set to 0, and the item added to the 
      */
     public String getReorderList(){
-	String retVal = " ";
+	String retVal = "";
 	for(String item : reorderList){
-	    retVal = "Item ran out of stock: " + item;
+	    retVal += "Item out of stock: " + item + "\n";
 	}
 	return retVal;
     }
