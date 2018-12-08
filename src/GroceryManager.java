@@ -68,7 +68,8 @@ public class GroceryManager {
     }
 
     /**
-     * @param order - 
+     * @param order - Represents the data from a few lines read in from the groceryOrders.txt
+     * file in Driver.java. 
      * 
      * Subtracts the items and quantities in the order from the inventory
      * If 0 inventory hit, add to reorder list.
@@ -77,7 +78,64 @@ public class GroceryManager {
      */
     public void processOrder(GroceryOrder order){
 	// Find the item in the list
-	
+
+    }
+
+    /**
+     * @param name
+     * @return
+     */
+    public GroceryItem findItemByName(String name){
+
+
+	return null;
+    }
+
+    /**
+     * Uses selection sort method to organize the List of items by their String values
+     * (lexicographically evaluated) by compareTo() method.
+     */
+    public void sortByName(){
+
+    }
+
+    /**
+     * This took a while to figure out.
+     * 
+     * @see http://bit.ly/2G3pDhG
+     * @see http://bit.ly/2G4Oulh
+     * @see http://bit.ly/2G3PyGc
+     * @see Lab_9 assignment.
+     */
+    public void sortByPrice(){
+	// The outer loop moves over 1 item every List size number of iterations
+	for(int i=0;i<inventory.size()-1;i++){
+	    // The inner loop checks value at some index 'j' against
+	    // its neighbor 'j+1'.
+	    for(int j=0;j<inventory.size()-i-1;j++){
+		// If the value at 'j' is > (greater than) its neighbor then initiate the swapping.
+		if(inventory.get(j).getPrice() > inventory.get(j+1).getPrice()){
+		    // Retain value of Object at position 'j' because it will be replaced when using set(e)
+		    GroceryItem item = inventory.get(j);
+		    //
+		    inventory.set(j, inventory.get(j+1));
+		    inventory.set(j+1,item);
+		}
+	    }
+	}
+    }
+
+    /**
+     * @return - Returns a compiled String of items that make-up the List 
+     * of items who's inventory is 0 or the item requested was GT the amount available
+     * and the quantity was set to 0, and the item added to the 
+     */
+    public String getReorderList(){
+	String retVal = " ";
+	for(String item : reorderList){
+	    retVal = "Item ran out of stock: " + item;
+	}
+	return retVal;
     }
 
     /**

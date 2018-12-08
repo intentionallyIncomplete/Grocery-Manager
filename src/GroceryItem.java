@@ -50,8 +50,8 @@ public abstract class GroceryItem implements Comparable<GroceryItem>{
     public String setName(String c_Name){
 	try{
 	    this.g_Name = c_Name;
-	}catch(Exception e){
-	    System.out.println("Name not valid " + e.getCause().toString());
+	}catch(GroceryException ge){
+	    throw new GroceryException("Could not set name of item",ge);
 	}
 	return g_Name;
     }
@@ -66,8 +66,8 @@ public abstract class GroceryItem implements Comparable<GroceryItem>{
     public int setQuantity(int c_Quantity){
 	try{
 	    this.g_Quantity = c_Quantity;
-	}catch(Exception e){
-	    System.out.print("Quantity not valid " + e.getCause().toString());
+	}catch(GroceryException ge){
+	    throw new GroceryException("Could not set quantity of item",ge);
 	}
 	return g_Quantity;
     }
@@ -82,8 +82,8 @@ public abstract class GroceryItem implements Comparable<GroceryItem>{
     public double setPrice(double c_Price){
 	try{
 	    this.g_Price = c_Price;
-	}catch(Exception e){
-	    System.out.println("Price not valid " + e.getCause().toString());
+	}catch(GroceryException ge){
+	    throw new GroceryException("Could not set price of item",ge);
 	}
 	return g_Price;
     }
