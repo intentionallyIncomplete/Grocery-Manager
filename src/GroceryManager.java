@@ -118,21 +118,27 @@ public class GroceryManager {
     /**
      * Uses selection sort method to organize the List of items by their String values
      * (lexicographically evaluated) by compareTo() method.
+     * 
+     * When comparing two String Objects using compareTo, an integer is returned that can be assigned
+     * to a "minimum value". When a new minimum is found - current < new evaluated, comparatively -
+     * then add in index 'i' the new minimum (the neighbor to i) which is the Object at position 'j'.
      */
     public void sortByName(){
-	for (int i=0;i<inventory.size()-1;i++) 
-	{ 
-	    // Find the minimum element in unsorted array 
-	    int min_idx = i; 
-	    int j;
-	    for (j = i+1; j < n; j++) 
-	    {
-		if (inventory.get(j).compareTo(inventory.get(min_idx)) < 1)
-		{
-		    min_idx = j; 
+	/* int minVal - used to store the current minimum value assigned
+	 * during the <i>outer</i> loop execution.
+	 * */
+	for (int i=0;i<inventory.size()-1;i++) {
+	    int minVal = i;
+	    for (int j=i+1;j<inventory.size();j++){
+		// compareTo (overridden in GroceryItem) will return
+		// -1, 0, or 1 for less than, equal to, or greater than.
+		// In this case the GroceryItem at position 'j' is evaluated
+		// Against the current minimum value.
+		if (inventory.get(j).compareTo(inventory.get(minVal)) < 1){
+		    minVal = j; 
 		}
 	    }  
-	    inventory.add(i, inventory.remove(min_idx)); //performs swap
+	    inventory.add(i, inventory.remove(minVal));
 	}  
     }
 
